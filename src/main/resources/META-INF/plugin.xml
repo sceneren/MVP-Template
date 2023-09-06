@@ -8,20 +8,11 @@
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.sceneren.mvptemplate.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-    </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.sceneren.mvptemplate.listeners.MyApplicationActivationListener"
-                  topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
-
-
     <actions>
         <action id="com.github.sceneren.mvptemplate.action.CreateTemplateAction"
                 icon="AllIcons.Actions.AddFile"
-                class="com.github.sceneren.mvptemplate.action.CreateTemplateAction" text="创建MVP模板" description="创建MVP模板">
+                class="com.github.sceneren.mvptemplate.action.CreateTemplateAction" text="创建MVP模板"
+                description="创建MVP模板">
             <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
     </actions>

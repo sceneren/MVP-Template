@@ -218,12 +218,29 @@ class CreateTemplateAction : AnAction() {
         return PrintWriter(FileWriter(file))
     }
 
+    private fun getPackageName(file: File): String {
+        val str = file.parentFile.absolutePath.replace("\\", ".")
+
+        var result = str.split("src.main.java.")
+        if (result.size != 2) {
+            result = str.split("src.main.kotlin.")
+        }
+        if (result.size != 2) {
+            result = str.split("src.")
+        }
+        return if (result.size != 2) {
+            result[0]
+        } else {
+            result[1]
+        }
+    }
+
     private fun getRootPackage(file: File): String {
-        return file.parentFile.absolutePath.replace("\\", ".").split("src.main.java")[1]
+        return getPackageName(file)
     }
 
     private fun getMvpPackage(file: File): String {
-        return file.parentFile.parentFile.absolutePath.replace("\\", ".").split("src.main.java")[1]
+        return getPackageName(file.parentFile)
     }
 
 }
